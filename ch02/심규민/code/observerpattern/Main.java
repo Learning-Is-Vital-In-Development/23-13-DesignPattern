@@ -20,5 +20,24 @@ public class Main {
         subject.removeObserver(observer1);
 
         subject.setStatus(new UserStatus("user", "password"));
+
+        /**
+         * registerObserver: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
+         * registerObserver: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
+         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
+         * UserObserver: UserStatus{name='user', password='password'}
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
+         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
+         * UserObserver: UserStatus{name='user', password='password'}
+         *
+         * removeObserver: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
+         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
+         * UserObserver: UserStatus{name='user', password='password'}
+         */
     }
 }
