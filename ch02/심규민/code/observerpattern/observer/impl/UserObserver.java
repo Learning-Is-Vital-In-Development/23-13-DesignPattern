@@ -7,7 +7,7 @@ import com.sim.observerpattern.subject.impl.UserStatus;
 public class UserObserver implements Observer<UserStatus> {
 
     @Override
-    public void updateStatus(UserStatus status) {
+    public void update(UserStatus status) {
         System.out.println("UserObserver: " + status);
     }
 }

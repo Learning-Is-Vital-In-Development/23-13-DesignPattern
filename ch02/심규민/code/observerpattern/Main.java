@@ -1,43 +1,58 @@
 package com.sim.observerpattern;
 
 import com.sim.observerpattern.observer.Observer;
+import com.sim.observerpattern.observer.impl.PostObserver;
 import com.sim.observerpattern.observer.impl.UserObserver;
 import com.sim.observerpattern.subject.impl.AbstractSubject;
+import com.sim.observerpattern.subject.impl.PostStatus;
 import com.sim.observerpattern.subject.impl.UserStatus;
 
 public class Main {
     public static void main(String[] args) {
         AbstractSubject subject = new AbstractSubject();
 
-        Observer observer1 = new UserObserver();
-        Observer observer2 = new UserObserver();
+        Observer userObserver1 = new UserObserver();
+        Observer userObserver2 = new UserObserver();
 
-        subject.registerObserver(observer1);
-        subject.registerObserver(observer2);
+        subject.registerObserver(userObserver1);
+        subject.registerObserver(userObserver2);
+
+        subject.setStatus(new UserStatus("user", "password"));
+
+        subject.removeObserver(userObserver1);
+
+        Observer postObserver = new PostObserver();
+
+        subject.registerObserver(postObserver);
 
         subject.setStatus(new UserStatus("user", "password"));
 
-        subject.removeObserver(observer1);
+        subject.setStatus(new PostStatus("title", "content"));
 
-        subject.setStatus(new UserStatus("user", "password"));
 
         /**
          * registerObserver: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
          * registerObserver: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
          *
          * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
-         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
          * UserObserver: UserStatus{name='user', password='password'}
          *
          * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
-         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
          * UserObserver: UserStatus{name='user', password='password'}
          *
          * removeObserver: com.sim.observerpattern.observer.impl.UserObserver@4517d9a3
          *
+         * registerObserver: com.sim.observerpattern.observer.impl.PostObserver@452b3a41
+         *
          * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
-         * Observer: class com.sim.observerpattern.observer.impl.UserObserver
          * UserObserver: UserStatus{name='user', password='password'}
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.PostObserver@452b3a41
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.UserObserver@372f7a8d
+         *
+         * notifyObservers: com.sim.observerpattern.observer.impl.PostObserver@452b3a41
+         * PostObserver: PostStatus{title='title', content='content'}
          */
     }
 }
