@@ -9,28 +9,25 @@ import java.util.List;
 
 public class AbstractSubject implements Subject {
     private Status status;
-    private Class<Status> clazz;
     private final List<Observer<? extends Status>> observerList = new ArrayList<>();
 
     @Override
-    public void registerObserver(Observer o) {
+    public void registerObserver(Observer<? extends Status> o) {
         System.out.println("registerObserver: " + o);
         observerList.add(o);
     }
 
     @Override
-    public void removeObserver(Observer o) {
+    public void removeObserver(Observer<? extends Status> o) {
         System.out.println("removeObserver: " + o);
         observerList.remove(o);
     }
 
     @Override
     public void notifyObservers() {
-        for (Observer observer : observerList) {
+        for (Observer<?> observer : observerList) {
             System.out.println("notifyObservers: " + observer);
-            try {
-                observer.update(status);
-            }catch (ClassCastException ignore){}
+            observer.update(status);
         }
     }
 

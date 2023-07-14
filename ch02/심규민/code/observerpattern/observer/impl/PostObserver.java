@@ -6,8 +6,7 @@ import com.sim.observerpattern.subject.impl.PostStatus;
 public class PostObserver implements Observer<PostStatus> {
 
     @Override
-    public void update(PostStatus status) {
+    public void attemptUpdate(PostStatus status) {
         System.out.println("PostObserver: " + status);
     }
-
 }
