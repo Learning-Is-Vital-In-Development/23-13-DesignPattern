@@ -5,9 +5,9 @@ import com.sim.factorypattern.dto.Provider;
 import com.sim.factorypattern.dto.OAuthResponse;
 import com.sim.factorypattern.subject.OAuth;
 
-public abstract class AbstractOAuthObserver implements Observer<OAuth> {
+public abstract class AbstractOAuthObserver implements Observer<OAuth, OAuthResponse> {
     @Override
-    public Object accept(OAuth status) {
+    public OAuthResponse accept(OAuth status) {
         OAuthUserInfo oAuthUserInfo = attemptLogin(status.getAccessToken());
         return generateServerAccessTool(oAuthUserInfo);
     }

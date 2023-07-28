@@ -22,8 +22,4 @@ public class OAuthConfig {
         return abstractOAuthSubject;
     }
 
-    @Bean
-    public OAuthFactory oAuthFactory(){
-        return new OAuth2OAuthFactory(abstractOAuthSubject());
-    }
 }
